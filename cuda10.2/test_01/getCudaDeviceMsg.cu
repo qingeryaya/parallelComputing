@@ -1,12 +1,7 @@
-#include <iostream>
-#include <string>
-#include "driver_types.h"
-#include <jsoncpp/json/json.h>
-#include <sstream>
+#include "cudaMsg.cuh"
 
-int main(int argc, char const *argv[])
+std::string getGpusMsg()
 {
-
         std::string jsonMsg = "{}";
         Json::Value root;
         Json::CharReaderBuilder reader;
@@ -46,8 +41,7 @@ int main(int argc, char const *argv[])
                 Node["maxGridSize"] = jsonArray;
                 root["No." + std::to_string(i)] = Node;
         }
-        // jsonMsg = root.toStyledString();
         Json::StyledWriter styledWriter;
         jsonMsg = styledWriter.write(root);
-        std::cout << jsonMsg << std::endl;
+        return jsonMsg;
 }
