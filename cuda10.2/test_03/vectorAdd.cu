@@ -21,11 +21,13 @@ int main(int argc, char const *argv[])
 {
         int *a = nullptr, *b = nullptr, *c1 = nullptr, *c2 = nullptr;
         int *d_a = nullptr, *d_b = nullptr, *d_c = nullptr;
+        cout << "*****1" << endl;
         a = (int *)malloc(sizeof(int) * LENVECTOR);
         b = (int *)malloc(sizeof(int) * LENVECTOR);
         c1 = (int *)malloc(sizeof(int) * LENVECTOR);
         c2 = (int *)malloc(sizeof(int) * LENVECTOR);
 
+        cout << "*****2" << endl;
         int lower_bound = 1;
         int upper_bound = 100;
 
@@ -34,17 +36,22 @@ int main(int argc, char const *argv[])
                 a[i] = std::rand() % (upper_bound - lower_bound + 1) + lower_bound;
                 b[i] = std::rand() % (upper_bound - lower_bound + 1) + lower_bound;
         }
+        cout << "*****3" << endl;
 
         cudaMalloc((void **)&d_a, sizeof(int) * LENVECTOR);
         cudaMalloc((void **)&d_b, sizeof(int) * LENVECTOR);
         cudaMalloc((void **)&d_c, sizeof(int) * LENVECTOR);
+        cout << "*****4" << endl;
 
         cudaMemcpy(d_a, a, sizeof(int) * LENVECTOR, cudaMemcpyKind::cudaMemcpyHostToDevice);
         cudaMemcpy(d_b, b, sizeof(int) * LENVECTOR, cudaMemcpyKind::cudaMemcpyHostToDevice);
+        cout << "*****5" << endl;
 
         vectorAdd<<<1, THREADSPERBLOCK>>>(d_a, d_b, d_c);
+        cout << "*****6" << endl;
 
         cudaMemcpy(c1, d_c, sizeof(int) * LENVECTOR, cudaMemcpyKind::cudaMemcpyDeviceToHost);
+        cout << "*****7" << endl;
         for (int i = 0; i < LENVECTOR; i++)
         {
                 c2[i] = a[i] + b[i];
