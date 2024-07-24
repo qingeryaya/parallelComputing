@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include "driver_types.h"
-#include <jsoncpp/json/json.h>
+#include <json/json.h>
 #include <sstream>
 
 std::string getGpusMsg();
