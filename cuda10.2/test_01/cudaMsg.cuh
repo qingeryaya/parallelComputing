@@ -7,6 +7,7 @@
 #include <json/json.h>
 #include <sstream>
 
+
 std::string getGpusMsg();
 
 #endif
