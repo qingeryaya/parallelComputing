@@ -1,0 +1,22 @@
+#ifndef __ERR_CODE_H__
+#define __ERR_CODE_H__
+
+#define MAX_BATCH_SIZE 4
+
+#define PASS 0
+#define BUILDER_CREATE_ERR 1
+#define NETWORK_CREATE_ERR 2
+#define CONFIG_CREATE_ERR 3
+#define PARSER_CREATE_ERR 4
+#define PARSER_FROM_FILE_ERR 5
+#define MAKE_CUDA_STREAM_ERR 6
+#define PARSER_PARSE_ERR 7
+#define ENGINE_BUILD_ERR 8
+#define SERIALIZE_MODEL_ERR 9
+#define FILE_OPEN_ERR 10
+#define FILE_NOT_EXIST_ERR 11
+#define LOAD_ENGIN_ERR 12
+
+
+
+#endif
